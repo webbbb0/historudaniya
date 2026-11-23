@@ -1,0 +1,244 @@
+      <!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дом-музей — Алматы</title>
+
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Подключение файла стилей -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Полоса прогресса прокрутки -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ШАПКА -->
+  <header class="topbar">
+    <a class="brand" href="#home">
+      <span class="brand-mark">Т</span>
+      <span>
+        <b>ДОМ-МУЗЕЙ</b>
+        <small>АЛМАТЫ · ЭКСПОЗИЦИЯ</small>
+      </span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#about">О деятеле</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#timeline">Этапы жизни</a>
+    </nav>
+
+    <div class="top-actions">
+    
+      </button>
+      <a class="wiki-btn" href="https://ru.wikipedia.org/wiki/Ташенов,_Жумабек_Ахметович" target="_blank" rel="noopener">Википедия ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ПЕРВЫЙ ЭКРАН (HERO) -->
+    <section class="hero" id="home">
+      <div>
+        <p class="section-kicker reveal-text">ИСТОРИЯ · НАСЛЕДИЕ · КАЗАХСТАН</p>
+        <h1 class="reveal-text delay-1">Дом, который <br><em>сохранил историю</em></h1>
+        <p class="hero-copy reveal-text delay-2">
+          Мемориальное пространство в Алматы на пересечении улиц Кунаева и Кабанбай батыра.
+          Архивные снимки, документы, предметы быта и экспозиции, раскрывающие эпоху и судьбы
+          государственных деятелей Казахстана.
+        </p>
+        <div class="hero-buttons reveal-text delay-3">
+          <a class="primary-btn" href="#gallery">Исследовать архив ↗</a>
+          <a class="text-btn" href="#about">Узнать больше ↓</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal-text delay-2">
+        <div class="floating-note">
+          <span>✦</span>
+          <div>
+            <b>1915 — 1986</b>
+            <small>Годы жизни</small>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <!-- Главное фото на первом экране (меняйте путь в src при необходимости) -->
+          <img id="heroImg" src="immmmg/234.jpeg" alt="Экспозиция в музее Алматы">
+          <div class="image-stamp">
+            <span>АРХИВ</span>
+            <b>10</b>
+            <small>КАДРОВ ЭКСПОЗИЦИИ</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 / О ДЕЯТЕЛЕ -->
+    <section id="about">
+      <div class="section-kicker reveal-text">01 / О ДЕЯТЕЛЕ</div>
+      <div class="intro-grid">
+        <h2 class="reveal-text delay-1">Не просто дом.<br><em>Целая эпоха.</em></h2>
+        <div class="intro-text reveal-text delay-2">
+          <p>
+            Жумабек Ахметович Ташенов занимал пост Председателя Президиума Верховного Совета (1955–1960)
+            и Председателя Совета министров Казахской ССР (1960–1961), принципиально отстаивая
+            территориальную целостность Казахстана. В экспозиции музея также широко представлены
+            материалы об эпохе развития Алма-Аты, промышленности, науки и личности Д. А. Кунаева.
+          </p>
+          <p>
+            Нажимайте на карточки экспонатов ниже, чтобы рассмотреть снимки в полном размере
+            и прочитать пояснения о личности и деталях каждого кадра.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 / ВИРТУАЛЬНАЯ ЭКСПОЗИЦИЯ (КАРТОЧКИ) -->
+    <section class="gallery-section" id="gallery">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker reveal-text">02 / ВИРТУАЛЬНАЯ ЭКСПОЗИЦИЯ</div>
+          <h2 class="reveal-text delay-1">Каталог <em>экспонатов</em></h2>
+        </div>
+        <p class="reveal-text delay-2">
+          Нажмите на любую карточку, чтобы открыть фотографию в полном размере и прочитать информацию о личности и самом экспонате.
+        </p>
+      </div>
+
+      <div class="filter-row reveal-text">
+        <div class="filters" id="filterButtons">
+          <button class="filter active" data-filter="all">Все экспонаты (<span id="allCount">10</span>)</button>
+          <button class="filter" data-filter="photos">Фотоархив</button>
+          <button class="filter" data-filter="documents">Документы</button>
+          <button class="filter" data-filter="personal">Экспонаты</button>
+          <button class="filter" data-filter="weapons">Арсенал</button>
+          <button class="filter" data-filter="interior">Интерьер</button>
+        </div>
+        <a href="#addPhoto" class="add-link">＋ Добавить фото в архив</a>
+      </div>
+
+      <!-- Сюда скрипт script.js подставляет карточки из массива EXHIBITS_DATA -->
+      <div class="gallery-grid" id="galleryGrid"></div>
+
+      <!-- Панель загрузки своего фото -->
+      <div class="upload-panel reveal-text" id="addPhoto">
+        <div class="upload-icon">＋</div>
+        <div>
+          <h3>Пополнить виртуальный архив</h3>
+          <p>Если у вас есть архивный снимок музея или экспоната, загрузите его — он сразу появится в каталоге.</p>
+          <label class="upload-btn">
+            Выбрать фотографию
+            <input type="file" id="photoUploadInput" accept="image/*">
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 / Этапы его жизни (TIMELINE) -->
+    <section class="timeline-section" id="timeline">
+      <div class="section-kicker reveal-text">03 / БИОГРАФИЯ</div>
+      <h2 class="reveal-text delay-1">Этапы <em>жизни</em></h2>
+
+      <div class="timeline">
+        <div class="timeline-item reveal-text">
+          <span class="timeline-year">1915</span>
+          <span class="timeline-dot"></span>
+          <div class="timeline-info">
+            <b>Рождение в Акмолинском уезде</b>
+            <small>20 марта 1915 года в ауле Танагуль родился Жумабек Ахметович Ташенов.</small>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-text">
+          <span class="timeline-year">1955</span>
+          <span class="timeline-dot"></span>
+          <div class="timeline-info">
+            <b>Председатель Президиума Верховного Совета КазССР</b>
+            <small>Активное развитие науки, культуры и строительство ключевых объектов республики.</small>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-text">
+          <span class="timeline-year">1960</span>
+          <span class="timeline-dot"></span>
+          <div class="timeline-info">
+            <b>Защита целостности Казахстана</b>
+            <small>На посту Председателя Совета министров КазССР принципиально выступил против отторжения северных, западных и южных земель Казахстана.</small>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-text">
+          <span class="timeline-year">1961</span>
+          <span class="timeline-dot"></span>
+          <div class="timeline-info">
+            <b>Работа в Чимкенте (Шымкенте)</b>
+            <small>После отставки по политическим мотивам продолжил трудиться заместителем председателя облисполкома, пользуясь огромным уважением народа.</small>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-text">
+          <span class="timeline-year">1986</span>
+          <span class="timeline-dot"></span>
+          <div class="timeline-info">
+            <b>Память поколений</b>
+            <small>18 ноября 1986 года Ж. А. Ташенов ушел из жизни. Его имя навсегда вписано в историю независимого Казахстана.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Дом-музей · Алматы, пересечение ул. Кунаева и Кабанбай батыра
+  </footer>
+
+  <!-- МОДАЛЬНОЕ ОКНО ДЛЯ ПРОСМОТРА ФОТО И ПОДРОБНОЙ ИНФОРМАЦИИ -->
+  <div class="modal" id="exhibitModal" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-box">
+      <button class="modal-close" id="modalClose" title="Закрыть">×</button>
+
+      <div class="modal-media">
+        <img id="modalImg" src="" alt="">
+      </div>
+
+      <div class="modal-copy">
+        <div class="modal-kicker" id="modalMeta">КАТЕГОРИЯ · №01</div>
+        <h3 id="modalTitle">Название экспоната</h3>
+
+        <div class="info-block">
+          <h4>О личности и историческом контексте</h4>
+          <p id="modalPersonality">Исторический контекст...</p>
+        </div>
+
+        <div class="info-block">
+          <h4>Об экспонате и деталях на фото</h4>
+          <p id="modalExhibitInfo">Описание предмета...</p>
+        </div>
+
+        <div class="modal-nav">
+          <div class="modal-nav-group">
+            <button class="modal-btn" id="prevExhibit">← Пред.</button>
+            <button class="modal-btn" id="nextExhibit">След. →</button>
+          </div>
+          <div class="modal-nav-group">
+            <button class="modal-btn" id="shareExhibit">Поделиться</button>
+            <a class="modal-btn primary" href="https://ru.wikipedia.org/wiki/Ташенов,_Жумабек_Ахметович" target="_blank" rel="noopener">Статья ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Всплывающее уведомление -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Подключение файла логики и данных -->
+  <script src="script.js"></script>
+</body>
+</html>
